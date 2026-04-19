@@ -1,2 +1,15 @@
-# Slug-Genrator-API
-Writing a library that contains a slug generator
+
+## Project setup
+
+```bash
+$ npm install
+```
+
+## Compile and run the project
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
