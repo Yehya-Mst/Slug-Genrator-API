@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { slugData } from './types';
+import { SlugModel } from './types';
 @Injectable()
 export class SlugService {
 

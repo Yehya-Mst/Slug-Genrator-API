@@ -1,5 +1,5 @@
-export type slugData = {
+export type SlugModel = {
   id: string,
-  originalStr: string,
+  originalString: string,
   slug: string,
 }
