@@ -5,19 +5,19 @@ import { SlugModel } from './types';
 export class SlugController {
   constructor(private slugService : SlugService){}
   @Post()
-  public createSlug(@Body() body : {str:string})  {
-    return this.slugService.createSlug(body.str);
+  public createSlug(@Body() body : {userString:string})  {
+    return this.slugService.createSlug(body.userString);
   }
-  @Get()
-  public getAllSlugs() : SlugModel[] { 
-    return this.slugService.getAllSlugs();
+  @Get()  
+  public getSlugs() : SlugModel[] { 
+    return this.slugService.getSlugs();
   }
   @Get(':id')
-  public getOneSlug(@Param('id') id : string) /* SlugModel - Question: Why doesn't it work?*/ {
+  public getOneSlug(@Param('id') id : number) /* SlugModel - Question: Why doesn't it work?*/ {
     return this.slugService.getOneSlug(id) ;
   }
   @Delete(':id')
-  public deleteSlug(@Param('id') id : string) : string {
+  public deleteSlug(@Param('id') id : number) : string {
     return this.slugService.deleteSlug(id);
   }
 }

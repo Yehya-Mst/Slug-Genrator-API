@@ -1,51 +1,44 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { SlugModel } from './types';
-import { slugify } from "slug-lib";
+import { slugify } from 'slug-lib';
 @Injectable()
 export class SlugService {
-  
   private currentId = 1;
-  private slugArray : SlugModel[] = [];
-  
-  getInxById(id :string ): number {
-     for(let i = 0 ; i < this.slugArray.length ; i++){
-      if(id === this.slugArray[i].id){
-        return i;
-      }
-    }
-    return -1;
+  private slugArray: SlugModel[] = [];
+
+  getIndexById(id: number): number {
+    const result = this.slugArray.findIndex((slug) => slug.id === id);
+    return result;
   }
-  
-  createSlug(str : string) : SlugModel {
-    this.slugArray.push({
-    id : (this.currentId++).toString(),
-    originalString : str,
-    slug: slugify(str)
-    });
-    return this.slugArray[this.slugArray.length-1];
+
+  createSlug(userString: string): SlugModel {
+    const newSlug: SlugModel = {
+      id: this.currentId++,
+      originalString: userString,
+      slug: slugify(userString),
+    };
+    this.slugArray.push(newSlug);
+    return newSlug;
   }
-  
-  
-  getAllSlugs() : SlugModel[] {
+
+  getSlugs(): SlugModel[] {
     return this.slugArray;
   }
-  
-  
-  getOneSlug(id : string) : SlugModel {
-    const index = this.getInxById(id);
-    if(index === -1 ){
+
+  getOneSlug(id: number): SlugModel {
+    const index = this.getIndexById(id);
+    if (index === -1) {
       throw new NotFoundException(`Slug with id ${id} not found`);
     }
     return this.slugArray[index];
   }
 
-
-  deleteSlug(id : string) : string {
-    const index = this.getInxById(id);
-    if(index === -1 ){
+  deleteSlug(id: number): string {
+    const index = this.getIndexById(id);
+    if (index === -1) {
       throw new NotFoundException(`Slug with id ${id} not found`);
     }
-    this.slugArray.splice(index,1);
+    this.slugArray.splice(index, 1);
     return `Slug with id ${id} deleted successfully`;
   }
 }
