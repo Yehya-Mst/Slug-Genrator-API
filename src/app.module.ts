@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Injectable, Module } from '@nestjs/common';
 import { SlugService } from './slug.service';
-
+import { SlugController } from './slug.controller';
 
 @Module({
-  imports: [],
+  controllers:[SlugController],
   providers: [SlugService],
 })
 export class AppModule {}
