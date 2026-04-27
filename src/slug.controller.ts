@@ -13,7 +13,7 @@ export class SlugController {
     return this.slugService.getSlugs();
   }
   @Get(':id')
-  public getOneSlug(@Param('id') id : number) /* SlugModel - Question: Why doesn't it work?*/ {
+  public getOneSlug(@Param('id') id : number)  {
     return this.slugService.getOneSlug(id) ;
   }
   @Delete(':id')
