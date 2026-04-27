@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { SlugService } from './slug.service';
 import type { SlugModel } from './types';
 @Controller('/api/slug')
@@ -13,11 +13,11 @@ export class SlugController {
     return this.slugService.getSlugs();
   }
   @Get(':id')
-  public getOneSlug(@Param('id') id: string): SlugModel {
-    return this.slugService.getOneSlug(Number(id));
+  public getOneSlug(@Param('id',ParseIntPipe) id: number): SlugModel {
+    return this.slugService.getOneSlug(id);
   }
   @Delete(':id')
-  public deleteSlug(@Param('id') id: string): string {
-    return this.slugService.deleteSlug(Number(id));
+  public deleteSlug(@Param('id',ParseIntPipe) id: number): string {
+    return this.slugService.deleteSlug(id);
   }
 }
