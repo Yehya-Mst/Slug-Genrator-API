@@ -1,6 +1,6 @@
 import { Injectable, Module } from '@nestjs/common';
-import { SlugService } from './slug.service';
-import { SlugController } from './slug.controller';
+import { SlugService } from './slug.service.js';
+import { SlugController } from './slug.controller.js';
 
 @Module({
   controllers: [SlugController],

@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../src/app.module.js';
 
 const request = require('supertest');
 
@@ -76,6 +76,7 @@ describe('SlugController (e2e)', () => {
     return request(app.getHttpServer())
       .delete('/api/slug/non-existent-id')
       .expect(400);
+      
   });
   afterAll(async () => {
     await app.close();
