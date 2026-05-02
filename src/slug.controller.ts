@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Delete, Body, Param, ParseIntPipe } from '@nestjs/common';
-import { SlugService } from './slug.service';
+import { SlugService } from './slug.service.js';
 import type { SlugModel } from './types';
 @Controller('/api/slug')
 export class SlugController {
