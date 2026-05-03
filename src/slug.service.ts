@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { SlugModel } from './types';
+import { SlugModel } from './types.js';
 import { slugify } from 'slug-lib';
 @Injectable()
 export class SlugService {
