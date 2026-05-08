@@ -4,6 +4,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Slug {
+  id             Int    @id @default(autoincrement())
+  originalString String @unique
+  slug           String @unique
 }
